@@ -1,21 +1,67 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-const React = require('react');
-const ReactDOM = require('react-dom');
+'use strict';
 
-const host = document.getElementById('host');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-const HelloMessage = React.createClass({
-    displayName: 'HelloMessage',
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-    render: function () {
-        return React.createElement(
-            'div',
-            null,
-            'Hello ',
-            this.props.name
-        );
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+var ReactDOM = require('react-dom');
+var host = document.getElementById('host');
+
+var Time = function (_React$Component) {
+    _inherits(Time, _React$Component);
+
+    function Time(props) {
+        _classCallCheck(this, Time);
+
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Time).call(this, props));
     }
-});
+
+    _createClass(Time, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'span',
+                null,
+                'It\'s currently ',
+                new Date().toTimeString(new Date().getTime())
+            );
+        }
+    }]);
+
+    return Time;
+}(React.Component);
+
+var HelloMessage = function (_React$Component2) {
+    _inherits(HelloMessage, _React$Component2);
+
+    function HelloMessage(props) {
+        _classCallCheck(this, HelloMessage);
+
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(HelloMessage).call(this, props));
+    }
+
+    _createClass(HelloMessage, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                null,
+                'Hello ',
+                this.props.name,
+                '! ',
+                React.createElement(Time, null)
+            );
+        }
+    }]);
+
+    return HelloMessage;
+}(React.Component);
 
 ReactDOM.render(React.createElement(HelloMessage, { name: 'Jeff' }), host);
 
